@@ -72,7 +72,7 @@ server <- function(input, output) {
                 aes(x = travel_time, color = factor(AfterImplementation), fill = factor(AfterImplementation))) + 
       geom_histogram(alpha = 0.5, position = "identity", bins = 30) + theme_minimal() +
       theme(legend.position="top")
-    p1 <- p + labs(title = "Travel Times on Full Segment", x = "Travel Time", y = "Count") +
+    p1 <- p + labs(x = "Travel Time", y = "Count") +
       guides(color=FALSE) +
       scale_fill_discrete(name = "Implementation Phase",labels = c("Before", "After"))
     p1
