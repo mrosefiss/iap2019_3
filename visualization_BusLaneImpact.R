@@ -84,7 +84,7 @@ server <- function(input, output) {
     d %>% filter(Route == data()) %>% 
       filter(Direction == dir()) %>% 
       filter(time_period == tp()) %>% 
-      # filter(MonthofImplementation == 1) %>% 
+      filter(MonthofImplementation == 1) %>% 
       group_by(Segment, Implementation) %>% 
       summarise(Median = median(travel_time), '95%'=quantile(travel_time, probs=0.95),
                 StdDev = sd(travel_time), n = n()) %>% 
@@ -104,7 +104,7 @@ server <- function(input, output) {
     p <- ggplot(d %>% filter(Route == data()) %>% 
                   filter(Direction == dir()) %>% 
                   filter(time_period == tp()) %>% 
-                  # filter(MonthofImplementation == 1) %>% 
+                  filter(MonthofImplementation == 1) %>% 
                   filter(Segment == 'Full Segment'),
                 aes(x = travel_time, color = factor(Implementation), fill = factor(Implementation))) + 
       geom_histogram(alpha = 0.5, position = "identity", bins = 30, aes(y =stat(width*density))) +
